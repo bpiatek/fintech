@@ -1,6 +1,8 @@
 package com.ft.fintech.interviews.intern.taskprocessor;
 
 import java.util.Collection;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ForkJoinPool;
 import java.util.stream.Collectors;
 
 /**
@@ -12,12 +14,26 @@ import java.util.stream.Collectors;
  */
 public class TaskProcessor {
 
-    Collection<Long> processThemAll(Collection<Task> tasks) {
+    private static final ForkJoinPool FORK_JOIN_POOL = new ForkJoinPool(10);
 
+    Collection<CompletableFuture<Long>> processThemAll(Collection<Task> tasks) {
         return tasks.stream()
-                .map(Task::compute)
-                .collect(Collectors.toList());
-
+            .map(t -> CompletableFuture.supplyAsync(t::compute, FORK_JOIN_POOL))
+            .collect(Collectors.toList());
     }
 
+
+    /* MY FIRST ATTEMPT WAS JUST TO INVOKE parallelStream() METHOD LIKE BELOW
+       BUT THE CODE WAS RUNNING ON ONLY 8 THREADS ON MY MACHINE AND SOMETIMES
+       I WAS NOT ABLE TO FINISH PROCESSING WITHIN 10500 ms
+       THAT IS WHY SOLUTION ABOVE IS PREFERABLE
+
+    Collection<Long> processThemAll(Collection<Task> tasks) {
+
+        return tasks.parallelStream()()
+            .map(Task::compute)
+            .collect(Collectors.toList());
+
+    }
+     */
 }

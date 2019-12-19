@@ -5,6 +5,7 @@ import java.time.Instant;
 import java.util.Collection;
 import java.util.LinkedList;
 import java.util.Random;
+import java.util.concurrent.CompletableFuture;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -54,7 +55,11 @@ public class TaskProcessorRunner {
 
         // the time is measured here, and our goal is to reduce the overall processing time (!!!)
         Instant start = Instant.now();
-        Collection<Long> results = processor.processThemAll(tasks);
+
+        Collection<Long> results = processor.processThemAll(tasks).stream()
+            .map(CompletableFuture::join)
+            .collect(Collectors.toList());
+
         Instant finish = Instant.now();
 
         long timeElapsed = Duration.between(start, finish).toMillis();
