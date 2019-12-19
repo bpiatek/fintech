@@ -12,12 +12,10 @@ import java.util.stream.Collectors;
  */
 public class TaskProcessor {
 
-    Collection<Long> processThemAll(Collection<Task> tasks) {
+    <T> Collection<T> processThemAll(Collection<Task<T>> tasks) {
 
-        return tasks.stream()
+        return tasks.parallelStream()
                 .map(Task::compute)
                 .collect(Collectors.toList());
-
     }
-
 }

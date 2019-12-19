@@ -19,7 +19,7 @@ public class TaskProcessorRunner {
     /**
      * Crates some random tasks. Each task has a duration: between 1000[ms] and 10000[ms]
      */
-    private static Collection<Task> createTasksList(int numberOfTasks) {
+    private static Collection<Task<String>> createTasksList(int numberOfTasks) {
 
         Random random = new Random(System.currentTimeMillis());
 
@@ -47,14 +47,14 @@ public class TaskProcessorRunner {
         int numberOfTasks = 10;
 
         // few tasks to be processed, they will have some random duration
-        Collection<Task> tasks = createTasksList(numberOfTasks);
+        Collection<Task<String>> tasksList = createTasksList(numberOfTasks);
 
         // now let's process the tasks! let's create the processor first
         TaskProcessor processor = new TaskProcessor();
 
         // the time is measured here, and our goal is to reduce the overall processing time (!!!)
         Instant start = Instant.now();
-        Collection<Long> results = processor.processThemAll(tasks);
+        Collection<String> results = processor.processThemAll(tasksList);
         Instant finish = Instant.now();
 
         long timeElapsed = Duration.between(start, finish).toMillis();

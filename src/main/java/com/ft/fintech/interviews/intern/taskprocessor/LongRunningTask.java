@@ -7,7 +7,7 @@ package com.ft.fintech.interviews.intern.taskprocessor;
  * @author William Shakespeare <william.shakespeare@franklintempleton.com>
  * @since 10/24/2019
  */
-public class LongRunningTask implements Task {
+public class LongRunningTask implements Task<String> {
 
     private final String name;
     private final long duration;
@@ -18,7 +18,7 @@ public class LongRunningTask implements Task {
     }
 
     @Override
-    public Long compute() {
+    public String compute() {
 
         System.out.printf("Task [%s] starting...\n", name);
 
@@ -33,6 +33,6 @@ public class LongRunningTask implements Task {
         // 'duration' is returned only because it matches the expected return type: Long
         // but it's not relevant - for this exercise we could return 0L as well - simply a random or a fixed number
 
-        return duration;
+        return name;
     }
 }
