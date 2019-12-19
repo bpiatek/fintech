@@ -1,4 +1,4 @@
-package com.ft.fintech.interviews.intern.taskprocessor;
+package com.ft.fintech.interviews.intern.taskprocessor.task;
 
 import java.util.Random;
 

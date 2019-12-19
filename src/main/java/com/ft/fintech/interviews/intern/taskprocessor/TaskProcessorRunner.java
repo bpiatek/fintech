@@ -1,5 +1,7 @@
 package com.ft.fintech.interviews.intern.taskprocessor;
 
+import com.ft.fintech.interviews.intern.taskprocessor.task.Task;
+import com.ft.fintech.interviews.intern.taskprocessor.task.TaskFacade;
 import org.apache.log4j.Logger;
 
 import java.time.Duration;
@@ -39,12 +41,13 @@ class TaskProcessorRunner {
      */
     public static void main(String[] args) {
 
+        TaskFacade taskFacade = new TaskFacade();
         // few tasks to be processed, they will have some random duration
-        Collection<Task> tasks = new TaskCreator().createTasksList(NUMBER_OF_TASKS);
+        Collection<Task> tasks = taskFacade.createList(NUMBER_OF_TASKS);
 
         // the time is measured here, and our goal is to reduce the overall processing time (!!!)
         Instant start = Instant.now();
-        int entriesNo = new TaskProcessor().processThemAll(tasks).size();
+        int entriesNo = taskFacade.processAll(tasks).size();
         Instant finish = Instant.now();
 
         long timeElapsed = Duration.between(start, finish).toMillis();

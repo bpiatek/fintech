@@ -1,4 +1,4 @@
-package com.ft.fintech.interviews.intern.taskprocessor;
+package com.ft.fintech.interviews.intern.taskprocessor.task;
 
 /**
  * A task - think about this as a piece of logic, what may be a possibly long-running activity.
@@ -6,6 +6,6 @@ package com.ft.fintech.interviews.intern.taskprocessor;
  * @author William Shakespeare <william.shakespeare@franklintempleton.com>
  * @since 10/24/2019
  */
-interface Task {
+public interface Task {
     Long compute();
 }
