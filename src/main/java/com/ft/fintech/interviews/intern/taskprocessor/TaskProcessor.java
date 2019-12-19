@@ -13,11 +13,8 @@ import java.util.stream.Collectors;
 public class TaskProcessor {
 
     Collection<Long> processThemAll(Collection<Task> tasks) {
-
         return tasks.stream()
                 .map(Task::compute)
                 .collect(Collectors.toList());
-
     }
-
 }

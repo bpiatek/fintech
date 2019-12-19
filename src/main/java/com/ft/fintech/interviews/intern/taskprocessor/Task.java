@@ -6,8 +6,6 @@ package com.ft.fintech.interviews.intern.taskprocessor;
  * @author William Shakespeare <william.shakespeare@franklintempleton.com>
  * @since 10/24/2019
  */
-public interface Task {
-
+interface Task {
     Long compute();
-
 }
