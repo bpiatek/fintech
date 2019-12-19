@@ -1,4 +1,4 @@
-package com.ft.fintech.interviews.intern.taskprocessor;
+package com.ft.fintech.interviews.intern.taskprocessor.task;
 
 /**
  * A task - think about this as a piece of logic, what may be a possibly long-running activity.
@@ -7,7 +7,5 @@ package com.ft.fintech.interviews.intern.taskprocessor;
  * @since 10/24/2019
  */
 public interface Task {
-
     Long compute();
-
 }

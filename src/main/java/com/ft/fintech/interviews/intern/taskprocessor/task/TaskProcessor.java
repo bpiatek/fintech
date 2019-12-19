@@ -1,4 +1,4 @@
-package com.ft.fintech.interviews.intern.taskprocessor;
+package com.ft.fintech.interviews.intern.taskprocessor.task;
 
 import java.util.Collection;
 import java.util.stream.Collectors;
@@ -10,14 +10,11 @@ import java.util.stream.Collectors;
  * @author William Shakespeare <william.shakespeare@franklintempleton.com>
  * @since 10/24/2019
  */
-public class TaskProcessor {
+class TaskProcessor {
 
     Collection<Long> processThemAll(Collection<Task> tasks) {
-
         return tasks.stream()
                 .map(Task::compute)
                 .collect(Collectors.toList());
-
     }
-
 }
